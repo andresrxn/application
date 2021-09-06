@@ -1,0 +1,97 @@
+:root {
+    --principal: #0C2635;
+    --secundary: #208dcc;
+    --secundaryopacity: #208dcc20;
+    --gris: #f0f0f0;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main-container .card {
+    position: absolute;
+    width: 90%;
+    margin: auto;
+    padding: 50px 10px;
+    background: var(--gris);
+    border-radius: 10px;
+    text-align: center;
+    opacity: 0;
+    z-index: 100;
+    max-width: 550px;
+}
+
+.main-container .card.active {
+    position: relative;
+    animation: ShowUp 0.4s ease forwards;
+    z-index: 300;
+    opacity: 1;
+}
+
+.main-container .card p {
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    padding-top: 20px;
+    display: block;
+    border-top: 2px solid #d6d6d6;
+    color: var(--secundary);
+}
+
+.main-container .card p .icon {
+    font-size: 0.8em;
+    margin-right: 3px;
+}
+
+.enter {
+    padding-bottom: 40px;
+}
+
+.enter h1 {
+    color: var(--principal);
+}
+
+.enter-container>div {
+    background: var(--secundaryopacity);
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: var(--secundary);
+    box-shadow: 0px 3px 0px 0px #208dcc40;
+}
+
+.enter-container>div:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+
+@media screen and (min-width:760px) {
+    .main-container .card {
+        padding: 40px;
+    }
+    .enter-container>div {
+        margin: 25px;
+        padding: 20px;
+        box-shadow: 0px 3px 0px 0px #208dcc40;
+        font-size: 1.2em;
+    }
+    main {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .enter-container>div,
+    .main-container .card p {
+        cursor: pointer;
+    }
+    .main-container .register.active {
+        margin-top: 80px;
+    }
+}

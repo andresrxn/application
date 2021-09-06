@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+:root {
+    --principal: #0C2635;
+    --secundary: #208dcc;
+    --secundaryopacity: #208dcc20;
+    --gris: #f0f0f0;
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 50px;
+}
+
+main,
+header,
+footer {
+    overflow: hidden;
+}
+
+h1,
+h2 {
+    margin: 0;
+    color: var(--principal);
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: var(--principal);
+    box-shadow: 2px 10px 30px -6px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    z-index: 3000;
+    left: 0;
+}
+
+.header-container,
+.main-container,
+.footer-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    margin: auto;
+}
+
+.header-container.account {
+    justify-content: space-between;
+}
+
+.header-container.account .header-logo img {
+    width: 140px;
+}
+
+.header-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo img {
+    width: 50%;
+    height: 100%;
+}
+
+.header-logout a {
+    background: var(--secundaryopacity);
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 2px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.icon.loading {
+    animation: loading 2s linear infinite;
+}
+
+.form {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.form-control {
+    margin-bottom: 14px;
+    padding-bottom: 17px;
+    position: relative;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea {
+    border: 2px solid transparent;
+    background: #fff;
+    border-radius: 7px;
+    display: block;
+    font-size: 1em;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 4px 10px 40px -6px rgba(0, 0, 0, 0.08);
+    color: rgb(90, 90, 90);
+}
+
+.form button,
+.form button:focus {
+    border: none;
+}
+
+.form-control.input-subject {
+    width: auto;
+    display: inline-block;
+}
+
+.form-control select {
+    border: 2px solid #f0f0f0;
+    appearance: none;
+    padding-right: 35px;
+}
+
+.arrow-icon {
+    position: absolute;
+    top: 7px;
+    right: 3px;
+    color: var(--secundary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    font-size: 0.8em;
+}
+
+.form-control input,
+.form-control textarea {
+    padding-right: 30px;
+}
+
+.form-control select {
+    display: inline-block;
+    width: auto;
+    font-size: 0.9em;
+}
+
+.input-phone input,
+.input-rep-phone input {
+    width: 80%;
+}
+
+.form-control select option {
+    font-weight: 500;
+}
+
+.form-control textarea {
+    resize: none;
+}
+
+.form-control input:focus,
+.form-control select:focus,
+.form-control textarea:focus {
+    outline: 0;
+    border: 2px solid #e4e4e4;
+}
+
+.form-control.success input,
+.form-control.success textarea {
+    border-color: #2ecc71;
+}
+
+.form-control.error input,
+.form-control.error textarea {
+    border-color: #e74c3c;
+}
+
+.form-control input::placeholder,
+.form-control textarea::placeholder {
+    color: #00000062;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.form-control input[type=password] {
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.form-control input[type=password]::placeholder {
+    letter-spacing: 0px;
+    font-weight: 600;
+}
+
+.form-control.input-check {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.form-control.input-check input {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+
+.form-control.input-check input:checked,
+.form-control.input-check input:checked:focus,
+.form-control.input-check input:checked:active,
+.form-control.input-check input:checked:hover {
+    color: var(--secundary);
+}
+
+.form-control.input-check label {
+    font-weight: 500;
+    opacity: 0.6;
+    margin-left: 10px;
+    font-size: 0.85em;
+    transition: opacity 0.2s ease;
+}
+
+.form-control.input-check input:checked~label {
+    opacity: 0.4;
+}
+
+.show-pass {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-pass .icon {
+    opacity: 0.5;
+}
+
+.form-control .inputIconPhone,
+.form-control.input-phone small {
+    right: 23%;
+}
+
+.form-control small {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 500;
+    font-size: 0.65em;
+    display: inline-block;
+}
+
+.form-control.error small {
+    visibility: visible;
+    color: #e74c3c;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.form button {
+    width: 100%;
+    display: inline-block;
+    background: var(--secundary);
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 13px 20px;
+    margin-top: 20px;
+    box-shadow: 4px 10px 40px -6px rgba(0, 0, 0, 0.08);
+}
+
+.form button:active {
+    transform: scale(0.98);
+}
+
+.form button .icon {
+    font-size: 0.8em;
+}
+
+.form button .icon.loading {
+    font-size: 1em;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.1);
+    height: 55px;
+    width: 100%;
+    position: relative;
+}
+
+.footer-container a {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 0.9em;
+}
+
+@keyframes ShowUp {
+    0% {
+        transform: translateY(45px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes Moving {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(100%, 0, 0);
+    }
+}
+
+@keyframes progressAnimation {
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+@keyframes popup {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes popupLink {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes gift {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(30deg);
+    }
+    50% {
+        transform: rotate(-30deg);
+    }
+    75% {
+        transform: rotate(30deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes heart {
+    from {
+        transform: none;
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    to {
+        transform: none;
+    }
+}
+
+@keyframes logo {
+    0% {
+        transform: rotate(-40deg) scale(0.3);
+        opacity: 0;
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes arrow {
+    0% {
+        transform: translate(0px, 15px);
+    }
+    50% {
+        transform: translate(0px, 0px);
+    }
+    100% {
+        transform: translate(0px, 15px);
+    }
+}
+
+@keyframes radio {
+    0%,
+    17.5% {
+        transform: scale(0);
+    }
+}
+
+@keyframes btnError {
+    0% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (min-width:760px) {
+    h1,
+    h2 {
+        font-size: 2.3em;
+    }
+    .header-logo img {
+        width: 70%;
+    }
+    .form-control input,
+    .form-control select,
+    .form-control textarea {
+        font-size: 1.15em;
+        padding: 12px;
+    }
+    .show-pass {
+        font-size: 1.2em;
+        top: 10px;
+    }
+    .form-control.input-check input {
+        width: 20px;
+        height: 20px;
+    }
+    .form-control.input-check label {
+        font-size: 0.95em;
+    }
+    .form-control small {
+        font-size: 0.8em;
+        bottom: -3px;
+        display: inline-block;
+    }
+    .form button {
+        padding: 16px;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .form button,
+    .form-control.input-check input,
+    .form-control.input-check label,
+    .show-pass {
+        cursor: pointer;
+    }
+    .hover:hover {
+        opacity: 0.85;
+        transform: scale(1.01);
+    }
+}
+
+
+/* @media screen and (min-width:375px) {}
+
+@media screen and (min-width:375px) {}
+
+@media screen and (min-width:375px) {}
+
+@media screen and (min-width:375px) {}
+
+@media screen and (min-width:375px) {} */

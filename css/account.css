@@ -1,0 +1,79 @@
+:root {
+    --principal: #0C2635;
+    --secundary: #208dcc;
+    --secundaryopacity: #208dcc20;
+    --gris: #f0f0f0;
+}
+
+.account-container,
+.admin-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.account-title p,
+.admin-title p {
+    margin-top: 7px;
+    color: var(--principal);
+    font-weight: 500;
+}
+
+.account-content {
+    min-height: 100vh;
+    margin-bottom: 100px;
+    margin-top: 70px;
+    background: var(--gris);
+    padding: 3px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.myMap {
+    height: 300px;
+    width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.admin-content {
+    min-height: 100vh;
+    position: relative;
+}
+
+.account-content .form {
+    margin: 0;
+}
+
+.generate-coo {
+    position: absolute;
+    top: 5px;
+    right: 4px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secundary);
+    font-size: 1.5em;
+}
+
+.generate-coo:active {
+    transform: scale(0.95);
+}
+
+.total {
+    position: absolute;
+    top: -35px;
+    font-weight: 500;
+    background: var(--secundaryopacity);
+    font-size: 0.85em;
+    color: var(--secundary);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.total span {
+    font-weight: 700;
+    margin-left: 5px;
+}
