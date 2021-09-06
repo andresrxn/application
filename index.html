@@ -1,0 +1,230 @@
+<?php
+
+
+
+include('php/dbusers.php');
+
+session_start();
+
+
+    if(isset($_COOKIE["app-user"])){
+        include('php/dbusers.php');
+    
+        $cookie = $_COOKIE["app-user"];
+    
+        $verificarUsuario = mysqli_query($connection, "SELECT * FROM usuarios WHERE tokenId='$cookie'");
+        
+        if(mysqli_num_rows($verificarUsuario) > 0){
+            $verificar = $verificarUsuario->fetch_array();
+            $tokenId = $verificar['tokenId'];
+            $privilegio = $verificar['privilegio'];
+    
+            $_SESSION["user"] = $tokenId;
+            $_SESSION["priv"] = $privilegio;
+            echo '<script>location.href = "cuenta.php"</script>';
+         
+        die();
+        }
+    }        
+
+
+?>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!--Default-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--favicon-->
+
+    <link rel="icon" href="favicon.jpg" type="image/x-icon" />
+    <!--About-->
+    <title>Ingresar</title>
+
+    <meta name="description" content="Aplicación web de registro y administración de datos.">
+
+    <!--preload-->
+
+
+    <!--Styles-->
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/index.css">
+
+
+    <!-- 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.css" integrity="sha512-eeBbzvdY28BPYqEsAv4GU/Mv48zr7l0cI6yhWyqhgRoNG3sr+Q2Fr6751bA04Cw8SGUawtVZlugHm5H1GOU/TQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    /> -->
+
+
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+    <header>
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="assets/logo.jpg" alt="logo-proyecto">
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="main-container">
+
+            <div class="enter card active" id="enter">
+                <h1>Bienvenido</h1>
+
+                <div class="enter-container">
+                    <div id="to-login" class="hover">
+                        Iniciar Sesión
+                    </div>
+                    <div id="to-register" class="hover">
+                        Registrarse
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="login card" id="login">
+                <h2>Iniciar Sesión</h2>
+                <div id="responseLogin"></div>
+                <form method="POST" action="" id="login-form" class="form">
+                    <div class="form-container">
+                        <div class="form-control input-login-user">
+
+                            <input type="text" id="loginUser" name="loginUser" placeholder="Usuario" maxlength="20">
+
+                            <small id="loginSmallUser"></small>
+                        </div>
+                    </div>
+                    <div class="form-container">
+                        <div class="form-control input-login-password">
+
+                            <input type="password" id="loginPassword" name="loginPassword" autocomplete="on" placeholder="Contraseña">
+                            <div class="show-pass show-login-pass">
+                                <i class="far fa-eye-slash icon"></i>
+                            </div>
+
+                            <small id="loginSmallPassword"></small>
+                        </div>
+                    </div>
+                    <div class="form-control input-login-open input-check">
+                        <input type="checkbox" name="login-open" id="login-open"><label for="login-open">Mantener sesión abierta</label>
+                    </div>
+                    <input type="hidden" name="ajax-login">
+                    <button id="loginSubmit" name="loginSubmit" class="hover">Ingresar</button>
+
+                </form>
+                <p id="back-register" class="hover"> <i class="fas fa-chevron-left icon"></i> Vovler a Registrarme</p>
+
+            </div>
+            <div class="register card" id="register">
+                <h2>Registrarme</h2>
+                <div id="responseRegister"></div>
+                <form method="POST" action="" id="register-form" class="form">
+                    <div class="form-container">
+                        <div class="form-control input-register-user">
+
+                            <input type="text" id="registerUser" name="registerUser" placeholder="Usuario" maxlength="20">
+
+                            <small id="registerSmallUser">Sin guiones o puntos, mínimo 6 caracteres</small>
+                        </div>
+
+
+                        <div class="form-control input-register-name">
+
+                            <input type="text" id="registerName" name="registerName" placeholder="Nombre(s) y Apellido(s)" maxlength="40">
+
+
+                            <small id="registerSmallName"></small>
+                        </div>
+
+                        <div class="form-control input-register-email">
+
+                            <input type="text" id="registerEmail" name="registerEmail" placeholder="Correo Electrónico">
+
+
+                            <small id="registerSmallEmail"></small>
+                        </div>
+
+                        <div class="form-control input-register-phone">
+
+                            <input type="number" id="registerPhone" name="registerPhone" placeholder="Teléfono" maxlength="15">
+
+
+                            <small id="registerSmallPhone">Sin guiones o espacios</small>
+                        </div>
+
+                        <div class="form-control input-register-password">
+
+                            <input type="password" id="registerPassword" name="registerPassword" autocomplete="on" placeholder="Contraseña">
+                            <div class="show-pass show-register-pass">
+                                <i class="far fa-eye-slash icon"></i>
+                            </div>
+
+                            <small id="registerSmallPassword">Incluya al menos un número y una mayúscula</small>
+                        </div>
+                        <div class="form-control input-register-open input-check">
+                            <input type="checkbox" name="register-open" id="register-open"><label for="register-open">Mantener sesión abierta</label>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="ajax-register">
+                    <button id="registerSubmit" name="registerSubmit" class="hover">Registrarme</button>
+
+                </form>
+                <p id="back-login" class="hover"> <i class="fas fa-chevron-left icon"></i> Volver a Iniciar Sesión</p>
+
+            </div>
+
+        </div>
+      
+    </main>
+
+    
+  <div id="out" ></div>
+  
+ 
+    <footer>
+        <div class="footer-container">
+            <a href="mailto:carlosraxon019@gmail.com">Soporte y Ayuda</a>
+        </div>
+    </footer>
+
+
+<!-- 
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script> -->
+    <!-- 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.8/swiper-bundle.min.js" integrity="sha512-sAHYBRXSgMOV2axInO6rUzuKKM5SkItFLlLHQ8YjRD+FBwowtATOs4njP9oim3/MzyAGrB52SLDjpAOLcOT9TA==" crossorigin=" anonymous" referrerpolicy="no-referrer"></script>
+ -->
+
+
+<!-- 
+    <script src="js/main.js"></script> -->
+
+  
+    <script src="js/index.js"></script>
+
+
+
+</body>
+
+
+
+</html>
